@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Perbaikan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e7f7c9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #d8f0b4;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #52b788;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #40916c;
+        }
+        .button-red {
+            background-color: #f94144;
+        }
+        .button-red:hover {
+            background-color: #d90429;
+        }
+        .button-back {
+            background-color: #a1c6e7;
+        }
+        .button-back:hover {
+            background-color: #6495ed;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script>
+        function simpanData() {
+            // Ambil data dari form
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+            const problem = document.getElementById("problem").value;
+
+            // Simpan data ke localStorage
+            localStorage.setItem("name", name);
+            localStorage.setItem("phone", phone);
+            localStorage.setItem("date", date);
+            localStorage.setItem("time", time);
+            localStorage.setItem("problem", problem);
+
+            // Arahkan ke halaman rekap
+            window.location.href = "rekap.html";
+        }
+
+        function kembaliKeInstruksi() {
+            // Arahkan ke halaman instruksi.html
+            window.location.href = "instruksi.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Formulir Bengkel</div>
+        <form onsubmit="simpanData(); return false;">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Nomor Telepon:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="date">Tanggal:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Jam Bertemu:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="problem">Problem pada Mobil:</label>
+            <textarea id="problem" name="problem" required></textarea>
+
+            <div class="buttons">
+                <button type="submit">Simpan Info</button>
+                <button type="button" class="button-back" onclick="kembaliKeInstruksi()">Kembali ke Instruksi</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
